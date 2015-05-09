@@ -1,0 +1,16 @@
+<h5 class="">All Provision Scripts</h5>
+
+<p class="info"><%= notice %></p>
+
+<% @provisions.each do |provision| %>
+  <h4>
+    <%= link_to provision.title, provision %>
+  </h4>
+  <p>
+    <%= link_to 'edit', edit_provision_path(provision) %> |
+    <%= link_to 'destroy', provision, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<br />
+<%= link_to 'New Provision Script', new_provision_path %>

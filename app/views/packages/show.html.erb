@@ -1,0 +1,19 @@
+<h5 class="">
+    <%= @package.name %>
+    <small>
+        <%= @package.version %>
+    </small>
+</h5>
+<p>
+    <%= @package.platform.name %> <%= @package.platform.codename %> <%= @package.platform.version %>
+</p>
+
+<p class="info"><%= notice %></p>
+
+<code>
+    <%= @package.install %>
+</code>
+<p></p>
+
+<%= link_to 'Edit', edit_package_path(@package) %> |
+<%= link_to 'Back', packages_path %>

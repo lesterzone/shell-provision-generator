@@ -1,0 +1,18 @@
+<% @packages.each do |package| %>
+  <div class="row">
+    <div class="six column">
+      <h5>
+        <%= link_to package.name, package %>
+        <small><em><%= package.version %></em></small>
+      </h5>
+    </div>
+    <div class="two column">
+      <p>
+        <small>
+          <%= link_to 'Edit', edit_package_path(package) %> |
+          <%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </small>
+      </p>
+    </div>
+  </div>
+<% end %>

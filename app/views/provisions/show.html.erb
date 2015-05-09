@@ -1,0 +1,15 @@
+<h5 class="title"><%= @provision.title %></h5>
+<p class="info"><%= notice %></p>
+
+<textarea class="u-full-width">
+  <%= @provision.script %>
+</textarea>
+
+<pre>
+    <code>
+        ~$ curl <%= polymorphic_url(@provision) %>.txt | bash
+    </code>
+</pre>
+
+<%= link_to 'Edit', edit_provision_path(@provision) %> |
+<%= link_to 'Back', provisions_path %>

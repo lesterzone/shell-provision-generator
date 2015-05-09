@@ -1,0 +1,16 @@
+<div class="container">
+    <h4>
+      <%= @platform.name %>
+    </h4>
+
+    <span>
+      <%= @platform.codename %> (<%= @platform.version %>)
+    </span>
+
+    <pre><code>
+      <%= @platform.install_command %>
+    </code> </pre>
+
+    <%= link_to 'Edit', edit_platform_path(@platform) %> |
+    <%= link_to 'Back', platforms_path %>
+</div>

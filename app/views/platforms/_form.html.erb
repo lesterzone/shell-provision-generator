@@ -1,0 +1,32 @@
+<%= form_for(@platform) do |f| %>
+  <% if @platform.errors.any? %>
+    <div id="container">
+      <ul>
+      <% @platform.errors.full_messages.each do |message| %>
+        <li class="error"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'u-full-width', placeholder: 'Ubuntu' %>
+
+    <div class="row">
+      <div class="six columns">
+        <%= f.label :codename %>
+        <%= f.text_field :codename, class: 'u-full-width', placeholder: 'Trusty Thar' %>
+      </div>
+
+      <div class="six columns">
+        <%= f.label :version %>
+        <%= f.text_field :version, class: 'u-full-width', placeholder: '14.04' %>
+      </div>
+    </div>
+
+    <%= f.label :install_command %>
+    <%= f.text_field :install_command, class: 'u-full-width', placeholder: 'sudo apt-get'%>
+
+  <%= f.submit 'Save Platform', class: 'button-primary' %>
+
+<% end %>

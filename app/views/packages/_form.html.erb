@@ -1,0 +1,35 @@
+<%= form_for(@package) do |f| %>
+
+  <% if @package.errors.any? %>
+    <div class="error">
+
+      <ul>
+      <% @package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'u-full-width', placeholder: 'apache2' %>
+
+    <%= f.label :version %>
+    <%= f.text_field :version, class: 'u-full-width', placeholder: '2'%>
+
+    <%= f.label :install %>
+    <%= f.text_field :install, class: 'u-full-width', placeholder: 'apache2' %>
+
+    <%= f.label :platform_id %>
+    <input id="platform_search" type="text" class="u-full-width" placeholder='Search for a platform, i.e: ubuntu' value="<%= @package.platform_search %>" />
+
+    <div class="row">
+      <ul id="results">
+
+      </ul>
+    </div>
+
+    <%= f.text_field :platform_id, class: 'hide'%>
+
+    <%= f.submit 'Save Package', class: 'button-primary' %>
+<% end %>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Shell Provision Generator</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body data-page="<%= body_page_name %>">
+    <div class="container">
+        <div class="row">
+            <div class="three columns">
+                <ul>
+                    <li>
+                        <a href="/"><button class="full-width">Home</button></a>
+                        <hr />
+                    </li>
+
+                    <li>
+                        <a href="<%= provisions_path %>" >
+                            provisions
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="<%= new_provision_path %>">new provision script</a>
+                        <hr />
+                    </li>
+
+                    <li>
+                        <a href="<%= platforms_path %>" >
+                            platforms
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<%= new_platform_path %>">new platform</a>
+                        <hr />
+                    </li>
+
+                    <li>
+                        <a class="full-width" href="<%= packages_path %>" >
+                            packages
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="full-width" href="<%= new_package_path %>">new package</a>
+                        <hr />
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <button class="full-width button-primary">
+                                login
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nine columns">
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
