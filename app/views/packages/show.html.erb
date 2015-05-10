@@ -1,4 +1,4 @@
-<h5 class="">
+<h5 class="title">
     <%= @package.name %>
     <small>
         <%= @package.version %>
@@ -15,5 +15,5 @@
 </code>
 <p></p>
 
-<%= link_to 'Edit', edit_package_path(@package) %> |
-<%= link_to 'Back', packages_path %>
+<%= link_to 'edit', edit_package_path(@package) %> |
+<%= link_to 'back', packages_path %>

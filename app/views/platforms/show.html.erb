@@ -1,16 +1,16 @@
-<div class="container">
-    <h4>
-      <%= @platform.name %>
-    </h4>
+<h5 class="title">
+  <%= @platform.name %>
+</h5>
 
-    <span>
-      <%= @platform.codename %> (<%= @platform.version %>)
-    </span>
+<span>
+  <%= @platform.codename %> (<%= @platform.version %>)
+</span>
 
-    <pre><code>
-      <%= @platform.install_command %>
-    </code> </pre>
+<pre>
+  <code>
+    <%= @platform.install_command %>
+  </code>
+</pre>
 
-    <%= link_to 'Edit', edit_platform_path(@platform) %> |
-    <%= link_to 'Back', platforms_path %>
-</div>
+<%= link_to 'edit', edit_platform_path(@platform) %> |
+<%= link_to 'back', platforms_path %>

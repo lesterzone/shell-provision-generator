@@ -45,3 +45,5 @@ end
 
 
 gem 'puma', '2.11.2'
+gem 'devise', '3.4.1'
+gem 'omniauth-github', '1.1.2'

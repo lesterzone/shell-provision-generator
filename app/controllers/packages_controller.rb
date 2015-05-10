@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_package, only: [:show, :update, :destroy]
 
   # GET /packages

@@ -56,13 +56,35 @@
                         <hr />
                     </li>
 
-                    <li>
-                        <a href="">
-                            <button class="full-width button-primary">
-                                login
-                            </button>
-                        </a>
-                    </li>
+                    <% if user_signed_in? %>
+
+                        <li>
+                            <%= current_user.username %>
+                        </li>
+
+                        <% if current_user.image %>
+
+                            <li>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <img class="u-max-full-width avatar" src="<%= current_user.image %>" />
+                                    </div>
+                                </div>
+                            </li>
+
+                        <% end %>
+
+                        <li>
+                            <%= link_to 'logout', destroy_user_session_path, :method => 'delete' %>
+                        </li>
+
+                    <% else %>
+
+                        <li>
+                            <%= link_to "login", user_omniauth_authorize_path(:github) %>
+                        </li>
+
+                    <% end %>
                 </ul>
             </div>
 

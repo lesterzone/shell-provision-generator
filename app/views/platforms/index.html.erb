@@ -1,12 +1,15 @@
-<h6 class="docs-header">Platforms</h6>
+<h5 class="title">Platforms</h5>
 <p class="info"><%= notice %></p>
 
 <% @platforms.each do |platform| %>
+    <h4>
+        <%= link_to platform.name, platform %>
+    </h4>
+    <%= platform.codename %> <%= platform.version %>
   <p>
-    <%= link_to platform.name, platform %> <%= platform.codename %> <%= platform.version %>
     <small>
-      <%= link_to 'Edit', edit_platform_path(platform) %> |
-      <%= link_to 'Destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'edit', edit_platform_path(platform) %> |
+      <%= link_to 'destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
   </p>
 <% end %>
