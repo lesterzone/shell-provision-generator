@@ -63,3 +63,8 @@ label {
 h4 {
     -webkit-margin-after: 0;
 }
+
+.avatar {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 50px;
+}

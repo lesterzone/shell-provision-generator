@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
@@ -33,7 +32,6 @@ var ajax = function(path, query, callback) {
 $(document).on('ready page:load', function() {
     var page = $('body').data('page');
     if ('object' === typeof window[page]) {
-        console.log('init', page);
-        window[page].init();
+        window[page] && window[page].init && window[page].init();
     }
 });
