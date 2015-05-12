@@ -10,6 +10,7 @@
         ~$ curl <%= polymorphic_url(@provision) %>.txt
     </code>
 </pre>
-
-<%= link_to 'edit', edit_provision_path(@provision) %> |
-<%= link_to 'back', provisions_path %>
+<% if owner(@provision) %>
+  <%= link_to 'edit', edit_provision_path(@provision) %> |
+  <%= link_to 'back', provisions_path %>
+<% end %>
