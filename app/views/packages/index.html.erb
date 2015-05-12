@@ -1,5 +1,7 @@
 <h5 class="title">List of available packages</h5>
 
+<p class="info"><%= notice %></p>
+
 <% @packages.each do |package| %>
   <h4>
     <%= link_to package.name, package %>

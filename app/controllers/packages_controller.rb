@@ -22,9 +22,19 @@ class PackagesController < ApplicationController
 
   # GET /packages/1/edit
   def edit
-    @package = Package.find(params[:id])
-    platform = @package.platform
-    @package.platform_search = platform ? platform.name : ''
+    respond_to do |format|
+      if !current_user
+        return format.html { redirect_to packages_url, notice: 'Only owner can edit'} 
+      end
+      @package = Package.find(params[:id])
+      platform = @package.platform
+      @package.platform_search = platform ? platform.name : ''
+      if current_user.id != @package.user_id
+        format.html { redirect_to packages_url, notice: 'Only owner can edit'}
+      else
+        format.html
+      end
+    end
   end
 
   # POST /packages
