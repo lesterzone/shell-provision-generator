@@ -1,5 +1,6 @@
 class ProvisionsController < ApplicationController
   before_action :set_provision, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /provisions
   # GET /provisions.json
@@ -24,34 +25,38 @@ class ProvisionsController < ApplicationController
 
   # GET /provisions/1/edit
   def edit
+    respond_to do |format|
+      if !current_user
+        return format.html { redirect_to @provision, notice: 'Only owner can edit'}
+      end
+      if @provision.user_id != current_user.id
+        format.html { redirect_to provisions_url, notice: 'Only owner can edit'}
+      else
+        format.html 
+      end
+    end
   end
 
   # POST /provisions
-  # POST /provisions.json
   def create
     @provision = Provision.new(provision_params)
-
+    @provision.user_id = current_user.id
     respond_to do |format|
       if @provision.save
         format.html { redirect_to @provision, notice: 'Provision was successfully created.' }
-        format.json { render :show, status: :created, location: @provision }
       else
         format.html { render :new }
-        format.json { render json: @provision.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /provisions/1
-  # PATCH/PUT /provisions/1.json
   def update
     respond_to do |format|
       if @provision.update(provision_params)
         format.html { redirect_to @provision, notice: 'Provision was successfully updated.' }
-        format.json { render :show, status: :ok, location: @provision }
       else
         format.html { render :edit }
-        format.json { render json: @provision.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +67,6 @@ class ProvisionsController < ApplicationController
     @provision.destroy
     respond_to do |format|
       format.html { redirect_to provisions_url, notice: 'Provision was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
