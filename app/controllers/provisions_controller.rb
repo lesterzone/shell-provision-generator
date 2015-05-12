@@ -27,7 +27,7 @@ class ProvisionsController < ApplicationController
   def edit
     respond_to do |format|
       if !current_user
-        return format.html { redirect_to @provision, notice: 'Only owner can edit'}
+        return format.html { redirect_to provisions_url, notice: 'Only owner can edit'}
       end
       if @provision.user_id != current_user.id
         format.html { redirect_to provisions_url, notice: 'Only owner can edit'}

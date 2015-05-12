@@ -1,5 +1,6 @@
 class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /platforms
   # GET /platforms.json
@@ -22,13 +23,23 @@ class PlatformsController < ApplicationController
 
   # GET /platforms/1/edit
   def edit
+    respond_to do |format|
+      if !current_user
+        return format.html { redirect_to platforms_url, notice: 'Only owner can edit'}
+      end
+      if @platform.user_id != current_user.id
+        format.html { redirect_to platforms_url, notice: 'Only owner can edit'}
+      else
+        format.html 
+      end
+    end
   end
 
   # POST /platforms
   # POST /platforms.json
   def create
     @platform = Platform.new(platform_params)
-
+    @platform.user_id = current_user.id
     respond_to do |format|
       if @platform.save
         format.html { redirect_to @platform, notice: 'Platform was successfully created.' }
