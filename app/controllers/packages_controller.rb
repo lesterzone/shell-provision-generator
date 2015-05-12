@@ -31,6 +31,7 @@ class PackagesController < ApplicationController
   # POST /packages.json
   def create
     @package = Package.new(package_params)
+    @package.user_id = current_user.id
 
     respond_to do |format|
       if @package.save
