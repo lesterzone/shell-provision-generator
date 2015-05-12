@@ -1,5 +1,7 @@
 <h5 class="title">List of available packages</h5>
 
+<p class="info"><%= notice %></p>
+
 <% @packages.each do |package| %>
   <h4>
     <%= link_to package.name, package %>
@@ -7,8 +9,10 @@
       version: <%= package.version %>
     </small>
   </h4>
-  <p>
-    <%= link_to 'edit', edit_package_path(package) %> |
-    <%= link_to 'destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
+  <% if owner(package) %>
+    <p>
+      <%= link_to 'edit', edit_package_path(package) %> |
+      <%= link_to 'destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
 <% end %>

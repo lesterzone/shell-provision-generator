@@ -15,5 +15,7 @@
 </code>
 <p></p>
 
-<%= link_to 'edit', edit_package_path(@package) %> |
-<%= link_to 'back', packages_path %>
+<% if owner(@package) %>
+  <%= link_to 'edit', edit_package_path(@package) %> |
+  <%= link_to 'back', packages_path %>
+<% end %>

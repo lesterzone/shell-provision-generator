@@ -12,5 +12,7 @@
   </code>
 </pre>
 
-<%= link_to 'edit', edit_platform_path(@platform) %> |
-<%= link_to 'back', platforms_path %>
+<% if owner(@platform) %>
+  <%= link_to 'edit', edit_platform_path(@platform) %> |
+  <%= link_to 'back', platforms_path %>
+<% end %>

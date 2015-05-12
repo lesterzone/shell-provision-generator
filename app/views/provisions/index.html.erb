@@ -6,10 +6,12 @@
   <h4>
     <%= link_to provision.title, provision %>
   </h4>
-  <p>
-    <%= link_to 'edit', edit_provision_path(provision) %> |
-    <%= link_to 'destroy', provision, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
+  <% if owner(provision)%>
+    <p>
+      <%= link_to 'edit', edit_provision_path(provision) %> |
+      <%= link_to 'destroy', provision, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
 <% end %>
 
 <br />

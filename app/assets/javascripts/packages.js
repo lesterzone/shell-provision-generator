@@ -4,7 +4,7 @@ var PackagesNew = new function() {
      * Init bindins,
      * called from page load event fired from application.js
      */
-    var init = function() {
+    this.init = function() {
         var platform = $('#platform_search');
         var platformResults = $('#results');
 
@@ -25,7 +25,7 @@ var PackagesNew = new function() {
         }
 
         var query = {
-            text: text
+            search: text
         };
 
         ajax('platforms', query, receivePlatform);
